@@ -28,7 +28,7 @@ namespace devboost.Repository
 
         public async Task<Cliente> GetClienteByUserName(string username)
         {
-            return await _dataContext.Cliente.FirstOrDefaultAsync(c => c.Nome.Equals(username));
+            return await _dataContext.Cliente.FirstOrDefaultAsync(c => c.User.UserName.Equals(username));
         }
     }
 }

@@ -13,9 +13,7 @@ namespace devboost.Domain.Model
         public double DistanciaParaOrigem { get; set; }
         public StatusPedido StatusPedido { get; set; }
 
-        public Cliente Cliente { get; set; } 
-        
-        public Guid IdCliente { get; set; }
+        public Cliente Cliente { get; set; }                
 
         [NotMapped]
         public string DescricaoStatus
@@ -39,6 +37,8 @@ namespace devboost.Domain.Model
                 }
             }
         }
+
+        public Guid ClienteId { get; set; }
 
         public List<PedidoDrone> PedidosDrones { get; set; } = new List<PedidoDrone>();
     }

@@ -54,6 +54,10 @@ namespace devboost.Repository.Context
                 .Property(x => x.DroneId)
                 .HasColumnName("Drone_Id");
 
+            builder.Entity<Pedido>()
+                .Property(x => x.ClienteId)
+                .HasColumnName("Client_Id");
+
             builder.Entity<PedidoDrone>()
                 .HasOne(x => x.Pedido)
                 .WithMany(x => x.PedidosDrones)
@@ -88,7 +92,7 @@ namespace devboost.Repository.Context
                 .Property(x => x.Role)
                 .HasColumnName("Papel");
 
-            builder.Entity<User>().HasOne(u => u.Cliente).WithOne(c => c.User);
+            //builder.Entity<User>().HasOne(u => u.Cliente).WithOne(c => c.User);
         }
 
         void ClienteModel(ModelBuilder builder)
