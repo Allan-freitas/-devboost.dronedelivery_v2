@@ -24,12 +24,12 @@ namespace devboost.Domain.Handles.Commands
 
             if (user == null)
                 throw new Exception("Não foi possível encontrar o usuário.");
-            Cliente c = new Cliente(cliente.Nome, cliente.Email, cliente.Latitude, cliente.Longitude, cliente.Endereco)
+            Cliente c = new Cliente(cliente.Nome, cliente.EMail, cliente.Telefone, cliente.Latitude, cliente.Longitude)
             {
                 User = user
             };
             if (!c.IsValid())
-                throw new Exception("Dados do cliente inválido, os campos: Nome, Endereço, Latitude e Longitude são obrigatórios.");
+                throw new Exception("Dados do cliente inválido, os campos: Nome, Latitude e Longitude são obrigatórios.");
             await _clienteRepository.AddAsync(c);
         }
     }

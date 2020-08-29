@@ -91,18 +91,44 @@ namespace devboost.Repository.Context
             builder.Entity<User>().HasOne(u => u.Cliente).WithOne(c => c.User);
         }
 
-        void ClienteModel(ModelBuilder modelBuilder)
+        void ClienteModel(ModelBuilder builder)
         {
-            modelBuilder.Entity<Cliente>().HasKey(c => c.Id);
+            builder.Entity<Cliente>().ToTable("Cliente");
 
-            modelBuilder.Entity<Cliente>().Property(c => c.Id).HasColumnName("Id");
-            modelBuilder.Entity<Cliente>().Property(c => c.Latitude).HasColumnName("Latitude");
-            modelBuilder.Entity<Cliente>().Property(c => c.Longitude).HasColumnName("Longitude");
-            modelBuilder.Entity<Cliente>().Property(c => c.Endereco).HasColumnName("Endereco");
-            modelBuilder.Entity<Cliente>().Property(c => c.Nome).HasColumnName("Nome");
-            modelBuilder.Entity<Cliente>().Property(c => c.Email).HasColumnName("Email");
+            builder.Entity<Cliente>()
+                .HasKey(x => x.Id);
 
-            modelBuilder.Entity<Cliente>().HasMany(c => c.Pedidos).WithOne(p => p.Cliente).HasForeignKey(p => p.IdCliente);
+            builder.Entity<Cliente>()
+                .Property(x => x.Id)
+                .HasColumnName("ID");
+
+            builder.Entity<Cliente>()
+                .Property(x => x.Nome)
+                .HasColumnName("Nome");
+
+            builder.Entity<Cliente>()
+                .Property(x => x.EMail)
+                .HasColumnName("email");
+
+            builder.Entity<Cliente>()
+                .Property(x => x.Telefone)
+                .HasColumnName("telefone");
+
+            builder.Entity<Cliente>()
+                .Property(x => x.Latitude)
+                .HasColumnName("Latitude");
+
+            builder.Entity<Cliente>()
+                .Property(x => x.Longitude)
+                .HasColumnName("Longitude");
+
+            builder.Entity<Cliente>()
+                .Property(x => x.UserId)
+                .HasColumnName("Usuario_Id");
+
+            builder.Entity<Cliente>()
+                .HasOne(x => x.User)
+                .WithOne(x => x.Cliente);
         }
     }
 }
